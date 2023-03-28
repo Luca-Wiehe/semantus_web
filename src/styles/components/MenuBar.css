@@ -1,0 +1,131 @@
+.menu-container {
+   height: var(--height_menu);
+   transition: 200ms ease;
+}
+
+.full-height {
+   height: 100vh;
+   transition: 200ms ease;
+}
+
+.menu-bar-wrapper {
+   display: flex;
+   width: calc(100% - 50px);
+   height: var(--height_menu);
+   align-items: center;
+   background-color: var(--color_secondary);
+   padding: 25px;
+   justify-content: space-between; /* title-wrapper: left; menu-bar-items: right */
+   transition: 200ms ease;
+}
+
+.menu-open {
+   background-color: var(--color_tertiary);
+   transition: 200ms ease;
+}
+
+.title-wrapper {
+   display: flex; 
+   height: 100%;
+   width: fit-content;
+   align-items: center;
+}
+
+.menu-bar-logo {
+   height: var(--height_menu); 
+   width: fit-content;
+   object-fit: contain; /* maintain aspect ratio */
+   border-radius: 10px;
+}
+
+.menu-bar-title {
+   font-weight: 700;
+   font-size: 2.7em;
+   color: var(--color_primary);
+   margin-left: 12px;
+}
+
+.menu-bar-items {
+   display: flex;
+   justify-content: flex-end;
+   list-style: none;
+   padding: 0;
+   margin: 0;
+}
+
+.menu-bar-items li {
+   display: flex;
+   height: var(--height_menu);
+   align-items: center;
+   margin-left: 32px;
+}
+
+.link-item {
+   color: var(--color_primary);
+   font-weight: 900;
+   font-size: 16px;
+   cursor: pointer;
+}
+
+.link-item:hover {
+   text-decoration: underline;
+   text-underline-offset: 6px;
+   text-decoration-thickness: 2px;
+}
+
+.user-item {
+   display: flex; 
+   flex-direction: column;
+   font-size: 14px;
+   justify-content: center;
+   color: var(--color_primary);
+   margin-right: -20px;
+}
+
+.upper-span {
+   font-weight: 900;
+}
+
+.avatar {
+   height: 100%;
+   width: fit-content;
+   object-fit: contain; 
+   border-radius: 50px;
+}
+
+@media (max-width: 768px) {
+   .menu-bar-title {
+     display: none; /* hide Semantus slogan in mobile screen */
+   }
+
+   .expanded-menu-bar-items li {
+      display: flex;
+      width: calc(100% - 40px);
+      height: 70px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+   }
+
+   .link-item {
+      position: relative; /* allow separator lines to use link-items as orientation */
+      font-size: 24px;
+      cursor: pointer;
+   }
+
+   .link-item:hover {
+      background-color: var(--color_primary);
+      color: var(--color_tertiary);
+      text-decoration: none;
+   }
+
+   .avatar {
+      width: 70px;
+      height: 70px;
+   }
+
+   .user-item {
+      margin-top: -20px;
+      border-bottom: 1px solid var(--color_primary);
+   }
+ }

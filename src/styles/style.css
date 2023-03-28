@@ -1,0 +1,13 @@
+:root {
+   font-family: 'Roboto', sans-serif;
+   --color_primary: #ffffff;
+   --color_secondary: #383434;
+   --color_tertiary: #23C065;
+   --color_quaternary: #FE295A;
+
+   --height_menu: 50px;
+}
+
+html {
+   scroll-behavior: smooth;
+}
