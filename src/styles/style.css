@@ -6,6 +6,11 @@
    --color_quaternary: #FE295A;
 
    --height_menu: 50px;
+   --padding_menu: 25px;
+}
+
+::-webkit-scrollbar {
+   display: none;
 }
 
 html {

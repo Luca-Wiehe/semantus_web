@@ -1,0 +1,117 @@
+.home {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+}
+
+.slogan {
+   margin-top: 20%;
+}
+
+.home h1 {
+   color: var(--color_primary);
+   font-size: 4.5em;
+   margin-top: -12px;
+   margin-bottom: -12px;
+   font-family: 'Inter', sans-serif;
+}
+
+.subtitle {
+   margin-top: 5%;
+   color: var(--color_primary);
+   font-size: 1.5em;
+   margin-bottom: 16px;
+}
+
+.phone-container {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-top: 10%;
+}
+
+.phone-container img {
+   width: 200px;
+   margin-right: 16px;
+}
+
+.mobile-app-btns {
+   display: flex;
+   flex-direction: column;
+   flex-grow: 1;
+}
+
+.mobile-app-btn1 {
+   margin-bottom: 12px;
+}
+
+.app-link {
+   width: 170px;
+   height: 32px;
+   border-radius: 50px;
+   border: 1px solid var(--color_primary);
+   background-color: var(--color_secondary);
+   color: var(--color_primary);
+   text-align: center;
+   font-weight: 700;
+   cursor: pointer;
+   line-height: 16px;
+}
+
+.app-link:hover {
+    background-color: var(--color_primary);
+    color: var(--color_secondary);
+}
+
+.app-link:hover .app-icon svg {
+    fill: var(--color_secondary);
+ }
+
+.app-icon {
+   display: inline-block;
+   vertical-align: middle;
+   margin-right: 6px;
+   margin-top: 3px;
+}
+
+.app-text {
+   display: inline-block;
+   vertical-align: middle;
+}
+
+@media (max-width: 1048px) {
+   .phone-container {
+      flex-direction: column;
+      transition: 200ms ease;
+   }
+
+   .mobile-app-btns {
+      margin-top: 12px;
+   }
+}
+
+@media (max-width: 768px) {
+   .slogan {
+      margin-top: 0;
+   }
+
+   .home {
+      grid-template-columns: 1fr;
+      grid-gap: 16px;
+      transition: 200ms ease;
+   }
+
+   .phone-container {
+      margin-top: 0;
+   }
+
+   .phone-container img {
+      width: 150px;
+      margin-right: 0;
+   }
+
+   .home h1 {
+      font-size: 3em;
+      margin-top: -6px;
+      margin-bottom: -6px;
+   }
+}

@@ -1,4 +1,28 @@
-.App {
+.app {
    width: 100%;
+}
+
+.body-bg {
+   background-color: var(--color_secondary);
    height: 100%;
+   width: 100%;
+}
+
+.body-container {
+   min-height: calc(100vh - var(--height_menu) - 3 * var(--padding_menu));
+   height: 100%;
+   width: calc(100vw - 2 * var(--padding_menu) - 50px - 12px); /* Full width - padding left - padding right */
+   margin-top: calc(2 * var(--padding_menu));
+   padding-left: calc(var(--padding_menu) + 50px + 12px); /* Standard padding + logo width + title margin */
+   padding-right: var(--padding_menu);
+   padding-bottom: var(--padding_menu);
+   transition: padding 600ms ease;
+}
+
+@media (max-width: 768px) {
+   .body-container {
+      padding-left: calc(var(--padding_menu)); /* Standard padding only */
+      width: calc(100vw - 2 * var(--padding_menu)); /* Full width - padding left (adjusted) - padding right */
+      transition: padding 600ms ease;
+   }
 }

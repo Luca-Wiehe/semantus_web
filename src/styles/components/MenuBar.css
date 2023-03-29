@@ -1,11 +1,10 @@
 .menu-container {
    height: var(--height_menu);
-   transition: 200ms ease;
 }
 
 .full-height {
    height: 100vh;
-   transition: 200ms ease;
+   transition: 200ms ease-in-out;
 }
 
 .menu-bar-wrapper {
@@ -14,14 +13,12 @@
    height: var(--height_menu);
    align-items: center;
    background-color: var(--color_secondary);
-   padding: 25px;
+   padding: var(--padding_menu);
    justify-content: space-between; /* title-wrapper: left; menu-bar-items: right */
-   transition: 200ms ease;
 }
 
 .menu-open {
    background-color: var(--color_tertiary);
-   transition: 200ms ease;
 }
 
 .title-wrapper {
@@ -33,8 +30,7 @@
 
 .menu-bar-logo {
    height: var(--height_menu); 
-   width: fit-content;
-   object-fit: contain; /* maintain aspect ratio */
+   width: var(--height_menu);
    border-radius: 10px;
 }
 
@@ -117,6 +113,10 @@
       background-color: var(--color_primary);
       color: var(--color_tertiary);
       text-decoration: none;
+   }
+
+   .emphasized {
+      border: 1px solid var(--color_primary);
    }
 
    .avatar {

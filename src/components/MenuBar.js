@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import { BiChevronsDown, BiChevronsUp } from 'react-icons/bi';
+import React from 'react';
+import { BiChevronsDown } from 'react-icons/bi';
+import { IoMdCloseCircleOutline } from 'react-icons/io';
 
 import '../styles/style.css'
 import '../styles/components/MenuBar.css';
@@ -8,30 +9,9 @@ import Button from './Button';
 /**
  * A responsive MenuBar that sticks to Semantus style guidelines.
  */
-const MenuBar = () => {
+const MenuBar = ({isLargeScreen, isMenuOpen, setMenuOpen}) => {
    // state variable to check if user is logged in
-   const isLoggedIn = true;
-
-   // state variable for conditional rendering based on screen size
-   const [isLargeScreen, setIsLargeScreen] = useState(false);
-
-   // state variable for menu bar in mobile screen
-   const [isMenuOpen, setMenuOpen] = useState(false);
-
-   // continuously track screen size
-   useEffect(() => {
-      const handleResize = () => {
-        setIsLargeScreen(window.innerWidth > 768);
-      };
-  
-      handleResize();
-  
-      window.addEventListener('resize', handleResize);
-  
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }, []);
+   const isLoggedIn = false;
 
    // display profile and points when logged in 
    const LoggedInMenuItems = ({isExpanded}) => {
@@ -53,8 +33,14 @@ const MenuBar = () => {
    }
 
    // display login-button when logged out
-   const LoggedOutMenuItems = () => {
-      return (
+   const LoggedOutMenuItems = ({isExpanded}) => {
+      
+      return isExpanded ? (
+         <li className="link-item emphasized">
+            Login
+         </li>
+      ) :
+      (
          <li>
             <Button 
                appearance="secondary" 
@@ -69,7 +55,7 @@ const MenuBar = () => {
    }
 
    return (
-      <div className={`menu-container ${isMenuOpen && !isLargeScreen ? "full-height menu-open" : ""}`}> 
+      <nav className={`menu-container ${isMenuOpen && !isLargeScreen ? "full-height menu-open" : ""}`}> 
          {/* Menu Bar */}
          <div className={`menu-bar-wrapper ${isMenuOpen && !isLargeScreen ? "menu-open" : ""}`}>
 
@@ -86,24 +72,24 @@ const MenuBar = () => {
                      <li className="link-item">
                         Regeln
                      </li>
-                     {isLoggedIn ? <LoggedInMenuItems isExpanded={!isLargeScreen} /> : <LoggedOutMenuItems />}
+                     {isLoggedIn ? <LoggedInMenuItems isExpanded={!isLargeScreen} /> : <LoggedOutMenuItems isExpanded={!isLargeScreen} />}
                   </ul>
                ) :
                isMenuOpen ? 
-                  <BiChevronsUp size="50px" color="var(--color_primary)" style={{"cursor": "pointer"}} onClick={() => setMenuOpen(!isMenuOpen)} /> :
+                  <IoMdCloseCircleOutline size="50px" color="var(--color_primary)" style={{"cursor": "pointer"}} onClick={() => setMenuOpen(!isMenuOpen)} /> :
                   <BiChevronsDown size="50px" color="var(--color_primary)" style={{"cursor": "pointer"}} onClick={() => setMenuOpen(!isMenuOpen)} />
             }
          </div>
          {/* Expanded Menu */}
          {isMenuOpen && !isLargeScreen && 
             <ul className="expanded-menu-bar-items">
-               {isLoggedIn ? <LoggedInMenuItems isExpanded={true} /> : <LoggedOutMenuItems />}
+               {isLoggedIn ? <LoggedInMenuItems isExpanded={true} /> : <LoggedOutMenuItems isExpanded={true} />}
                <li className="link-item">
                   Regeln
                </li>
             </ul>
          }
-      </div>
+      </nav>
    );
 };
 

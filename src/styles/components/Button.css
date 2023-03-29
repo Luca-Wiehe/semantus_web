@@ -4,4 +4,6 @@
    font-family: 'Roboto', sans-serif;
    font-weight: 900;
    font-size: 16px;
+   position: relative;
+   overflow: hidden;
 }
