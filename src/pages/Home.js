@@ -6,8 +6,8 @@ import '../styles/pages/Home.css';
 
 import Button from '../components/Button';
 
-import {DiAndroid} from 'react-icons/di';
-import {AiFillApple} from 'react-icons/ai';
+import { DiAndroid } from 'react-icons/di';
+import { AiFillApple } from 'react-icons/ai';
 
 const Home = () => {
    return (

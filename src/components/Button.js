@@ -11,7 +11,7 @@ import '../styles/components/Button.css';
  * @param {number} height - The height of the button in pixels.
  * @param {function} onClick - The click handler for the button.
  */
-const Button = ({ appearance, width, height, onClick, children }) => {
+const Button = ({ appearance, width, height, onClick, type, children }) => {
    const bgColor = appearance === 'primary' ? 'var(--color_tertiary)' : (appearance === 'secondary' ? 'var(--color_primary)' : 'var(--color_secondary)');
    const borderStyle = appearance === 'primary' ? '1px solid var(--color_tertiary)' : '1px solid var(--color_primary)';
    const textColor = appearance === 'secondary' ? 'var(--color_secondary)' : 'var(--color_primary)';
@@ -41,10 +41,14 @@ const Button = ({ appearance, width, height, onClick, children }) => {
    }
 
    return (
-      <button className="btn" style={style} onClick={onClick} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <button className="btn" style={style} onClick={onClick} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} type={type}>
          {children}
       </button>
    );
+}
+
+Button.defaultProps = {
+   type: ''
 }
 
 export default Button;

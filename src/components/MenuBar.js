@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { BiChevronsDown } from 'react-icons/bi';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 
@@ -37,19 +38,22 @@ const MenuBar = ({isLargeScreen, isMenuOpen, setMenuOpen}) => {
       
       return isExpanded ? (
          <li className="link-item emphasized">
-            Login
+            <Link className="link full-size-link" to="/login/" onClick={() => {setMenuOpen(false); console.log("Menu should close")}}>
+               Login
+            </Link>
          </li>
       ) :
       (
          <li>
-            <Button 
-               appearance="secondary" 
-               width="100px" 
-               height="32px" 
-               onClick={() => {console.log("Hello World")}}
-            >
-               Login
-            </Button>
+            <Link className="link" to="/login/">
+               <Button 
+                  appearance="secondary" 
+                  width="100px" 
+                  height="32px" 
+               >
+                  Login
+               </Button>
+            </Link>
          </li>
       );
    }
@@ -60,10 +64,12 @@ const MenuBar = ({isLargeScreen, isMenuOpen, setMenuOpen}) => {
          <div className={`menu-bar-wrapper ${isMenuOpen && !isLargeScreen ? "menu-open" : ""}`}>
 
             {/* Logo and 'Semantus' Title */}
-            <div className="title-wrapper">
-               <img className="menu-bar-logo" src="images/logo512.png" alt="Semantus Logo" />
-               <span className="menu-bar-title">Semantus</span>
-            </div>
+            <Link className="link" to="/">
+               <div className="title-wrapper">
+                  <img className="menu-bar-logo" src="images/logo512.png" alt="Semantus Logo" />
+                  <span className="menu-bar-title">Semantus</span>
+               </div>
+            </Link>
 
             {/* Menu items */}
             {isLargeScreen ?
