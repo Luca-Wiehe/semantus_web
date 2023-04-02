@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 
-import '../styles/style.css'
+import '../styles/style.css';
 import '../styles/components/Button.css';
 
 /**

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import 'animate.css';
 
 import '../styles/style.css'
@@ -20,7 +21,9 @@ const Home = () => {
             </div>
             <div className="subtitle animate__animated animate__fadeInLeft">Das Wortratespiel anhand semantischer Ähnlichkeiten</div>
             <div className="animate__animated animate__fadeInLeft animate__delay-1s">
-               <Button appearance="secondary" width="150px" height="32px">Jetzt spielen</Button>
+               <Link className="link" to="/daily">
+                  <Button appearance="secondary" width="150px" height="32px">Jetzt spielen</Button>
+               </Link>
             </div>
          </div>
          

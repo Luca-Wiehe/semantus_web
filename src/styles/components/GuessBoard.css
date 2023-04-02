@@ -1,0 +1,159 @@
+table {
+   width: 100%;
+   color: var(--color_primary);
+   border-collapse: collapse;
+}
+
+thead {
+   position: sticky;
+   top: 0;
+   background-color: var(--color_secondary);
+}
+
+thead::before {
+   content: "";
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   border-bottom: 2px solid white;
+   z-index: 1;
+ }
+
+table th, table td {
+   font-size: 1.4em;
+}
+
+.left-aligned {
+   text-align: left;
+}
+
+.center-aligned {
+   text-align: center;
+}
+
+table tr:nth-child(1) {
+   border-bottom: 1px solid var(--color_primary);
+}
+
+table th:nth-child(1),
+table td:nth-child(1) {
+   width: 48px;
+}
+
+table th:nth-child(2),
+table td:nth-child(2) {
+   width: 200px;
+   vertical-align: middle;
+}
+
+table th:nth-child(3),
+table td:nth-child(3) {
+   width: 108px;
+}
+
+table th:nth-child(4),
+table td:nth-child(4) {
+   width: 140px;
+   padding-right: 8px;
+}
+
+table th:nth-child(5),
+table td:nth-child(5) {
+   width: 122px;
+   text-align: center;
+}
+
+.rank-cell {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 140px;
+}
+ 
+.truncate {
+   width: 20px;
+   height: 100%;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   word-break: break-all;
+   line-height: 32px; /* button height + button margins */
+}
+
+.guess-progress-background {
+   display: inline-block;
+   width: 80px;
+   height: 12px;
+   background-color: var(--color_primary);
+   border-radius: 50px;
+   right: 12px;
+}
+
+.guess-progress {
+   background: linear-gradient(to right, #D6FBA7, var(--color_tertiary));
+   height: 12px;
+   border-radius: 80px;
+   margin-right: 0;
+}
+
+table button {
+   height: 24px;
+   width: 120px;
+   background-color: var(--color_primary);
+   color: var(--color_secondary);
+   border-radius: 50px;
+   border: 1px solid var(--color_primary);
+   font-weight: 700;
+   font-size: 1.2rem;
+   cursor: pointer;
+   margin-bottom: 4px;
+   margin-top: 4px;
+}
+
+table button:hover {
+   background-color: var(--color_secondary);
+   color: var(--color_primary);
+}
+
+@media (max-width: 768px){
+   table th:nth-child(2),
+   table td:nth-child(2) {
+      width: 80px;
+      vertical-align: middle;
+   }
+
+   table th:nth-child(5),
+   table td:nth-child(5) {
+      display: none;
+   }
+
+   .rank-cell {
+      width: 100px;
+   }
+
+   .guess-progress-background {
+      width: 40px;
+   }
+
+   table th:nth-child(4),
+   table td:nth-child(4) {
+      width: 100px;
+      padding-right: 0;
+   }
+}
+
+@media (max-width: 450px){
+   table th:nth-child(4),
+   table td:nth-child(4) {
+      width: 60px;
+   }
+
+   .rank-cell {
+      width: 60px;
+   }
+
+   .guess-progress-background {
+      display: none;
+   }
+}

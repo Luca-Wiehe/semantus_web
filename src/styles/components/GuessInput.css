@@ -1,0 +1,64 @@
+.submit-guess-form {
+   margin-top: 12px;
+   width: 100%;
+}
+
+.submit-guess-form input {
+   width: calc(100% - 12px - 102px); /* width - padding-left - button width */
+   height: 30px;
+   border: unset;
+   border-radius: 50px 0px 0px 50px;
+   padding-left: 12px;
+   color: var(--color_secondary);
+   font-size: 1.3rem;
+   font-weight: 700;
+}
+
+.submit-guess-form input:focus {
+   outline: none;
+   width: calc(100% - 12px - 106px);
+   height: calc(30px - 4px);
+   border: 2px solid var(--color_tertiary);
+}
+
+.submit-guess-form button {
+   display: inline;
+   width: 100px;
+   height: 30px;
+   background-color: var(--color_tertiary);
+   border: unset;
+   outline: 1px solid var(--color_tertiary);
+   border-radius: 0px 50px 50px 0px;
+   cursor: pointer;
+   color: var(--color_primary);
+   font-size: 1.3rem;
+   font-weight: 700;
+}
+
+.hint-btn-wrapper {
+   width: 100%;
+   margin-top: 12px;
+   display: flex;
+   justify-content: center;
+}
+
+.hint-btn {
+   display: flex;
+   width: 100px;
+   height: 30px;
+   background-color: var(--color_secondary); 
+   border: 1px solid var(--color_primary);
+   border-radius: 50px;
+   color: var(--color_primary);
+   font-size: 1.3rem;
+   font-weight: 700;
+   cursor: pointer;
+   justify-content: center;
+   align-items: center;
+}
+
+.hint-btn-wrapper img {
+   width: 20px;
+   height: 20px;
+   margin-right: 8px;
+}

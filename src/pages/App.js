@@ -5,6 +5,7 @@ import MenuBar from '../components/MenuBar';
 import Home from '../pages/Home';
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
+import Daily from "../pages/Daily";
 
 import '../styles/style.css';
 import '../styles/pages/App.css';
@@ -42,6 +43,7 @@ const App = () => {
                         <Route path="/" exact element={<Home />}/>
                         <Route path="/login" exact element={<Login />}/>
                         <Route path="/signup" exact element={<Signup />}/>
+                        <Route path="/daily" exact element={<Daily />}/>
                      </Routes>
                   </div>
                </div>
