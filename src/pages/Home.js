@@ -20,8 +20,8 @@ const Home = () => {
                <h1>Unterhaltsam.</h1>
             </div>
             <div className="subtitle animate__animated animate__fadeInLeft">Das Wortratespiel anhand semantischer Ähnlichkeiten</div>
-            <div className="animate__animated animate__fadeInLeft animate__delay-1s">
-               <Link className="link" to="/daily">
+            <div className="animate__animated animate__fadeInLeft delay-2">
+               <Link className="link" to="/gamemode">
                   <Button appearance="secondary" width="150px" height="32px">Jetzt spielen</Button>
                </Link>
             </div>

@@ -6,6 +6,7 @@ import Home from '../pages/Home';
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import Daily from "../pages/Daily";
+import GameMode from "../pages/GameMode";
 
 import '../styles/style.css';
 import '../styles/pages/App.css';
@@ -44,6 +45,7 @@ const App = () => {
                         <Route path="/login" exact element={<Login />}/>
                         <Route path="/signup" exact element={<Signup />}/>
                         <Route path="/daily" exact element={<Daily />}/>
+                        <Route path="/gamemode" exact element={<GameMode />}/>
                      </Routes>
                   </div>
                </div>
