@@ -1,0 +1,25 @@
+.rules-container {
+   color: var(--color_primary);
+}
+
+.rules-icon-wrapper {
+   display: flex;
+   justify-content: center;
+   position: relative;
+   align-items: center;
+   width: calc(100% - 6px);
+   height: calc(80px - 6px);
+   border: 2px solid var(--color_primary);
+   border-radius: 10px;
+}
+
+.rules-icon-wrapper svg {
+   position: absolute;
+   width: 35px;
+   height: 35px;
+   left: 24px;
+}
+
+.rules-container h1 {
+   font-size: 3rem;
+}

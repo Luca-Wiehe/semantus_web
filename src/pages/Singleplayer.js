@@ -1,37 +1,37 @@
 import React, { useState } from 'react';
 
-import '../styles/style.css';
-import '../styles/pages/Daily.css';
-import '../styles/pages/Home.css';
 import 'animate.css';
+import '../styles/style.css';
+import '../styles/pages/Singleplayer.css';
 
 import GuessBoard from '../components/GuessBoard';
 import GuessInput from '../components/GuessInput';
 
-const Daily = () => {
+
+const Singleplayer = () => {
    const [guessList, setGuessList] = useState([]);
    
    const [currentTry, setCurrentTry] = useState(0);
    const [tryCount, setTryCount] = useState(0);
 
    return (
-      <div className="daily-container">
-         <div className="guess-list-wrapper">
+      <div className="singleplayer-container">
+         <div className="singleplayer-guess-list-wrapper">
             <GuessBoard guessList={guessList} latestTry={currentTry} />
          </div>
-         <div className="daily-submit-word-wrapper">
+         <div className="singleplayer-submit-word-wrapper">
             <GuessInput 
-               hintsActivated={true} 
-               guessList={guessList}
+               currentTry={currentTry} 
+               setCurrentTry={setCurrentTry} 
+               tryCount={tryCount} 
+               setTryCount={setTryCount} 
+               guessList={guessList} 
                setGuessList={setGuessList}
-               currentTry={currentTry}
-               setCurrentTry={setCurrentTry}
-               tryCount={tryCount}
-               setTryCount={setTryCount}
+               hintsActivated={true} 
             />
          </div>
       </div>
    );
 }
 
-export default Daily;
+export default Singleplayer;

@@ -1,0 +1,97 @@
+.accordion-container {
+   width: 100%;
+   color: var(--color_secondary);
+}
+ 
+.transition, p, ul li i:before, ul li i:after {
+   transition: all 0.3s;
+}
+
+.accordion-container h3 {
+   padding-left: 16px;
+   margin-top: 18px;
+   margin-bottom: 6px;
+}
+
+.accordion-container p {
+   text-align: justify;
+   line-height: 1.45;
+   position: relative;
+   overflow: scroll;
+   max-height: 250px;
+   will-change: max-height;
+   contain: layout;
+   display: inline-block;
+   opacity: 1;
+   transform: translate(0, 0);
+   margin-top: 5px;
+   margin-bottom: 15px;
+   padding: 0 40px 0 16px;
+   transition: .3s opacity, .6s max-height;
+   hyphens: auto;
+   z-index: 2;
+}
+ 
+.accordion-container ul {
+   list-style: none;
+   perspective: 900;
+   padding: 0;
+}
+
+.accordion-container ul li {
+   position: relative;
+   overflow: hidden;
+   padding: 0;
+   margin-top: 12px;
+   background-color: var(--color_primary);
+   border-radius: 10px;
+   -webkit-tap-highlight-color: transparent;
+}
+
+.accordion-container ul li i {
+   position: absolute;
+   transform: translate(-6px, 0);
+   margin-top: 24px;
+   right: 15px;
+}
+
+.accordion-container ul li i:before, ul li i:after {
+   content: "";
+   position: absolute;
+   background-color: var(--color_tertiary);
+   width: 3px;
+   height: 9px;
+}
+
+.accordion-container ul li i:before {
+   transform: translate(-2px, 0) rotate(45deg);
+}
+
+.accordion-container ul li i:after {
+   transform: translate(2px, 0) rotate(-45deg);
+}
+
+.accordion-container ul li input[type=checkbox] {
+   position: absolute;
+   cursor: pointer;
+   width: 100%;
+   height: 100%;
+   z-index: 1;
+   opacity: 0;
+   touch-action: manipulation;
+}
+
+.accordion-container ul li input[type=checkbox]:checked ~ p {
+  max-height: 0;
+  transition: .3s;
+  opacity: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.accordion-container ul li input[type=checkbox]:checked ~ i:before {
+  transform: translate(2px, 0) rotate(45deg);
+}
+.accordion-container ul li input[type=checkbox]:checked ~ i:after {
+  transform: translate(-2px, 0) rotate(-45deg);
+}

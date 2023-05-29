@@ -1,0 +1,226 @@
+.friends-container {
+   color: var(--color_primary);
+}
+
+.friends-icon-wrapper {
+   display: flex;
+   justify-content: center;
+   position: relative;
+   align-items: center;
+   width: calc(100% - 6px);
+   height: calc(80px - 6px);
+   border: 2px solid var(--color_primary);
+   border-radius: 10px;
+}
+
+.friends-icon-wrapper svg {
+   position: absolute;
+   width: 35px;
+   height: 35px;
+   left: 24px;
+}
+
+.invitation-tabs {
+   margin-top: 24px;
+   padding: 0;
+   display: flex;
+   list-style: none;
+}
+
+.invitation-tabs li{
+   flex: 1;
+   height: 40px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   cursor: pointer;
+   text-align: center;
+   font-size: 1rem;
+   font-weight: 700;
+}
+
+.invitation-tabs li:hover {
+   border-bottom: 4px solid #ffffff50;
+}
+
+.invitation-tabs li.active {
+   border-bottom: 4px solid var(--color_primary);
+}
+
+.friends-container h3 {
+   margin-top: 12px;
+   margin-bottom: 8px;
+}
+
+.sent-invitation-wrapper {
+   position: relative;
+   width: calc(100% - 12px);
+   height: 50px;
+   margin-bottom: 4px;
+   background-color: var(--color_primary);
+   border-radius: 10px;
+   display: flex;
+   align-items: center;
+   padding-left: 12px;
+   color: var(--color_secondary);
+}
+
+.sent-invitation-wrapper span {
+   font-weight: 700;
+}
+
+.invitation-avatar img {
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   margin-right: 12px;
+}
+
+.user-action-btn {
+   position: absolute;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   right: 12px;
+   width: 30%;
+   height: 50%;
+   border-radius: 20px;
+   font-weight: 700;
+}
+
+.tertiary-btn {
+   background-color: var(--color_primary);
+   color: var(--color_secondary);
+   border: 1px solid var(--color_secondary);
+   cursor: pointer;
+}
+
+.secondary-btn {
+   background-color: var(--color_primary);
+   border: 1px solid var(--color_tertiary);
+   color: var(--color_tertiary);
+   cursor: pointer;
+}
+
+.primary-btn {
+   background-color: var(--color_tertiary);
+   color: var(--color_primary);
+   border: 1px solid var(--color_tertiary);
+   cursor: default;
+}
+
+.filtered-invitation-container {
+   height: calc(100vh - 24px - 40px - 74px - 50px - 54px - 12px); /* 100vh - sent-invitation-wrapper - invitation-tabs li - friends-icon-wrapper - sent-invitations-wrapper - invite-link-container */
+   overflow-y: scroll;
+}
+
+.invite-link-container::before {
+   content: '';
+   display: block;
+   width: 60%;
+   border-top: 1px solid var(--color_primary);
+   margin-left: 20%;
+   margin-bottom: 12px;
+}
+
+.invite-link-container {
+   position: absolute;
+   bottom: 24px;
+   width: calc(100% - 48px);
+}
+
+.invite-link-wrapper {
+   height: 30px;
+   border-radius: 50px;
+   background-color: var(--color_primary);
+   display: flex;
+   align-items: center;
+   color: var(--color_secondary);
+   font-weight: 500;
+   padding-left: 12px;
+   position: relative;
+}
+
+.invite-icon-wrapper {
+   position: absolute;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: var(--color_secondary);
+   height: 30px;
+   width: 50px;
+   right: 0;
+   border-top-right-radius: 50px;
+   border-bottom-right-radius: 50px;
+   cursor: pointer;
+}
+
+.invite-icon-wrapper svg {
+   color: var(--color_primary);
+   height: 16px;
+   width: 16px;
+}
+
+.invitation-action-wrapper {
+   position: absolute;
+   right: 12px;
+}
+
+.invitation-action-wrapper svg {
+   width: 25px;
+   height: 25px;
+   margin-left: 4px;
+   cursor: pointer;
+}
+
+.received-invitation-information {
+   display: flex;
+   flex-direction: column;
+   font-weight: 400;
+}
+
+.received-invitation-information span {
+   margin-bottom: 2px;
+}
+
+.search-player-form {
+   height: 30px;
+   margin-bottom: 12px;
+}
+
+.search-player-form input {
+   width: calc(100% - 100px - 12px);
+   height: 100%;
+   outline: none;
+   border: none;
+   padding: 0;
+   border-top-left-radius: 50px;
+   border-bottom-left-radius: 50px;
+   font-size: 1rem;
+   padding-left: 12px;
+   color: var(--color_secondary);
+}
+
+.search-player-form button {
+   width: 100px;
+   height: 100%;
+   outline: none;
+   border: none;
+   background-color: var(--color_secondary);
+   color: var(--color_primary);
+   border-top-right-radius: 50px;
+   border-bottom-right-radius: 50px;
+   font-weight: 700;
+   font-size: 1rem;
+   cursor: pointer;
+}
+
+@media (max-width: 768px) {  
+   .invite-link-container {
+      bottom: 72px;
+   }
+
+   .filtered-invitation-container {
+      height: calc(100vh - 24px - 40px - 74px - 50px - 102px);
+   }
+}

@@ -1,0 +1,34 @@
+[
+   {
+      "title": "Wort des Tages",
+      "limit": "Kein Limit",
+      "reward": "1000 Punkte",
+      "hint": "500 Punkte / Tipp",
+      "preview": ["images/calendar-icon.svg"],
+      "link": "/daily/"
+    },
+    {
+      "title": "Einzelspieler",
+      "limit": "Kein Limit",
+      "reward": "500 Punkte",
+      "hint": "200 Punkte / Tipp",
+      "preview": ["images/player-icon.svg"],
+      "link": "/singleplayer/"
+    },
+    {
+      "title": "Gegeneinander",
+      "limit": "5min Limit",
+      "reward": "250 Punkte",
+      "hint": "Keine Tipps",
+      "preview": ["images/player-icon.svg", "images/versus-icon.svg", "images/player-icon.svg"],
+      "link": "/versus/"
+    },
+    {
+      "title": "Miteinander",
+      "limit": "Kein Limit",
+      "reward": "500 Punkte",
+      "hint": "100 Punkte / Tipp",
+      "preview": ["images/player-icon.svg", "images/team-icon.svg", "images/player-icon.svg"],
+      "link": "/coop/"
+    }
+]

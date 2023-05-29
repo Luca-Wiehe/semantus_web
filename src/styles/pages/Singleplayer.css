@@ -1,0 +1,43 @@
+.singleplayer-container {
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   top: 0;
+   bottom: 0;
+   height: calc(100% - var(--padding_menu));
+   width: calc(100% - 2 * var(--padding_menu) - 50px - 12px);
+}
+
+.singleplayer-guess-list-wrapper {
+   height: 50%;
+   width: 66%;
+   border-bottom: 2px solid var(--color_primary);
+   flex-grow: 1; /* set height to maximum - height of submit form */
+   transition: width 600ms ease;
+   overflow-y: scroll;
+   position: relative;
+}
+
+.singleplayer-submit-word-wrapper {
+   width: 66%;
+   height: fit-content;
+   transition: width 600ms ease;
+}
+
+@media (max-width: 1072px){
+   .singleplayer-guess-list-wrapper {
+      width: 100%;
+      transition: width 600ms ease;
+   }
+
+   .singleplayer-submit-word-wrapper {
+      width: 100%;
+      transition: width 600ms ease;
+   }
+}
+
+@media (max-width: 768px){
+   .singleplayer-container {
+      width: calc(100% - 2 * var(--padding_menu));
+   }
+}

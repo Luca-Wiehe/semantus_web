@@ -6,11 +6,12 @@ import { IoMdCloseCircleOutline } from 'react-icons/io';
 import '../styles/style.css'
 import '../styles/components/MenuBar.css';
 import Button from './Button';
+import Rules from './Rules';
 
 /**
  * A responsive MenuBar that sticks to Semantus style guidelines.
  */
-const MenuBar = ({isLargeScreen, isMenuOpen, setMenuOpen}) => {
+const MenuBar = ({isLargeScreen, isMenuOpen, setMenuOpen, changeSidebarState, setSidebarContent}) => {
    // state variable to check if user is logged in
    const isLoggedIn = false;
 
@@ -38,7 +39,7 @@ const MenuBar = ({isLargeScreen, isMenuOpen, setMenuOpen}) => {
       
       return isExpanded ? (
          <li className="link-item emphasized">
-            <Link className="link full-size-link" to="/login/" onClick={() => {setMenuOpen(false); console.log("Menu should close")}}>
+            <Link className="link full-size-link" to="/login/" onClick={() => {setMenuOpen(false);}}>
                Login
             </Link>
          </li>
@@ -75,7 +76,10 @@ const MenuBar = ({isLargeScreen, isMenuOpen, setMenuOpen}) => {
             {isLargeScreen ?
                (
                   <ul className="menu-bar-items">
-                     <li className="link-item">
+                     <li 
+                        className="link-item" 
+                        onClick={() => {changeSidebarState(); setMenuOpen(false); setSidebarContent(<Rules />)}}
+                     >
                         Regeln
                      </li>
                      {isLoggedIn ? <LoggedInMenuItems isExpanded={!isLargeScreen} /> : <LoggedOutMenuItems isExpanded={!isLargeScreen} />}
@@ -90,7 +94,7 @@ const MenuBar = ({isLargeScreen, isMenuOpen, setMenuOpen}) => {
          {isMenuOpen && !isLargeScreen && 
             <ul className="expanded-menu-bar-items">
                {isLoggedIn ? <LoggedInMenuItems isExpanded={true} /> : <LoggedOutMenuItems isExpanded={true} />}
-               <li className="link-item">
+               <li className="link-item" onClick={() => {changeSidebarState(); setMenuOpen(false); setSidebarContent(<Rules />)}}>
                   Regeln
                </li>
             </ul>

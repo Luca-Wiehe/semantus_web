@@ -1,0 +1,89 @@
+.versus-container {
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   display: grid;
+   grid-template-rows: 30% 1fr;
+   grid-template-columns: 66% 1fr;
+   grid-gap: 24px;
+   height: calc(100% - var(--padding_menu) - 24px); /* 100% - menu_padding - grid-gap */
+   width: calc(100% - 2 * var(--padding_menu) - 50px - 12px);
+}
+
+.versus-container > .guess-wrapper {
+   grid-column: 1;
+   grid-row: 1/4;
+   display: flex;
+   flex-direction: column;
+}
+
+.versus-guess-list-wrapper {
+   border-bottom: 2px solid var(--color_primary);
+   flex-grow: 1; /* set height to maximum - height of submit form */
+   transition: width 600ms ease;
+   overflow-y: scroll;
+   position: relative;
+}
+
+.versus-submit-word-wrapper {
+   height: fit-content;
+   transition: width 600ms ease;
+}
+
+.timer-wrapper {
+   grid-row: 1;
+   grid-column: 2;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+}
+
+.timer-wrapper svg {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+}
+
+.versus-container > .leaderboard-wrapper {
+   overflow-y: scroll;
+   grid-row: 2;
+   overflow-x: hidden;
+}
+
+@media (max-width: 1072px){
+   .versus-guess-list-wrapper {
+      width: 100%;
+      transition: width 600ms ease;
+   }
+
+   .versus-submit-word-wrapper {
+      width: 100%;
+      transition: width 600ms ease;
+   }
+}
+
+@media (max-width: 768px){
+   .versus-container {
+      width: calc(100% - 2 * var(--padding_menu));
+      grid-template-columns: 60% calc(40% - 24px);
+      grid-template-rows: 20% 1fr;
+   }
+
+   .versus-container > .leaderboard-wrapper {
+      grid-row: 1;
+      grid-column: 1;
+   }
+
+   .versus-container > .timer-wrapper {
+      grid-row: 1;
+      grid-column: 2;
+   }
+
+   .versus-container > .guess-wrapper {
+      grid-row: 2;
+      grid-column: 1/3;
+   }
+}

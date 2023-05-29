@@ -10,11 +10,14 @@
    width: 100%;
 }
 
+.gamemode-link {
+   flex: 1;
+   margin-right: 8px;
+}
+
 .gamemode {
    height: fit-content;
-   flex: 1;
    border: 1px solid var(--color_primary);
-   margin-right: 8px;
    border-radius: 20px;
    padding: 12px;
    cursor: pointer;
