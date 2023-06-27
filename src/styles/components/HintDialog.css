@@ -1,0 +1,130 @@
+.hint-dialog-wrapper {
+   position: relative;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.hint-dialog-wrapper .hint-icon-wrapper {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100px;
+   height: 100px;
+   background-color: #77dd7710;
+   border: 8px solid #77dd7740;
+   border-radius: 50%;
+   margin-bottom: 24px;
+}
+
+.hint-dialog-wrapper img {
+   width: 60px;
+   height: 60px;
+}
+
+.hint-dialog-wrapper span {
+   font-weight: 700;
+   font-size: 1.5rem;
+   font-family: 'Roboto', sans-serif;
+   margin-bottom: 12px;
+}
+
+.hint-dialog-wrapper .button-wrapper {
+   /* place buttons on bottom */ 
+   width: 100%;
+   position: absolute;
+   bottom: 0;
+
+   /* equal spacing between all buttons */
+   display: flex;
+   justify-content: space-around;
+}
+
+.hint-dialog-wrapper .button-wrapper button {
+   /* button size */
+   height: 50px;
+   width: 30%;
+
+   border-radius: 35px;
+
+   /* cursor style */
+   cursor: pointer;
+}
+
+.hint-dialog-wrapper ul {
+   list-style-type: none;
+   padding: 0;
+   font-size: 1.3rem;
+}
+
+.hint-dialog-wrapper ul li {
+   position: relative;
+   margin-bottom: 12px;
+   padding-left: 80px;
+}
+
+.hint-dialog-wrapper ul li::before {
+   position: absolute;
+   left: 0;
+   content: attr(data-option) ":";
+   width: 80px;
+}
+
+.primary {
+   background-color: var(--color_tertiary);
+   border: 2px solid var(--color_tertiary);
+   color: var(--color_primary);
+   font-weight: 700;
+   font-size: 1rem;
+}
+
+.secondary {
+   background-color: var(--color_primary);
+   border: 2px solid var(--color_secondary);
+   color: var(--color_secondary);
+   font-weight: 700;
+   font-size: 1rem;
+}
+
+.tertiary {
+   text-decoration: underline;
+   background-color: var(--color_primary);
+   color: var(--color_secondary);
+   border: none;
+   font-weight: 700;
+   font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+
+   /* orientation of buttons */
+   .hint-dialog-wrapper .button-wrapper {
+
+      /* buttons should be from top to bottom */
+      flex-direction: column;
+   }
+
+   .hint-dialog-wrapper .button-wrapper button {
+      /* button size */
+      height: 40px;
+      width: 100%;
+   
+      margin-top: 8px;
+      font-size: 1.2rem;
+   }
+
+   .tertiary {
+      height: 30px;
+   }
+
+   .hint-dialog-wrapper span {
+      /* adjust font size based on screen size */
+      font-size: 1.8rem;
+
+      /* center text within span */
+      text-align: center;
+
+   }
+}

@@ -7,10 +7,9 @@ import '../styles/pages/Coop.css';
 import GuessBoard from '../components/GuessBoard';
 import GuessInput from '../components/GuessInput';
 import Leaderboard from '../components/Leaderboard';
-import Button from '../components/Button';
 import GameInvite from '../components/GameInvite';
 
-const Coop = ({ changeSidebarState, setSidebarContent, isLargeScreen }) => {
+const Coop = ({ setPopupContent, changeSidebarState, setSidebarContent, setPopupOpen, isLargeScreen }) => {
    const [guessList, setGuessList] = useState([]);
 
    const players = [
@@ -64,7 +63,10 @@ const Coop = ({ changeSidebarState, setSidebarContent, isLargeScreen }) => {
                      setTryCount={setTryCount} 
                      guessList={guessList} 
                      setGuessList={setGuessList}
-                     hintsActivated={true} 
+                     hintsActivated={true}
+                     setPopupContent={setPopupContent}
+                     setPopupOpen={setPopupOpen}
+                     isLargeScreen={isLargeScreen}
                   />
                </div>
             </div>

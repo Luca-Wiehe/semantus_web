@@ -1,0 +1,66 @@
+/** 
+ *    style popup container
+ **/
+.popup-container {
+   /* position popup relative to parent div */
+   position: absolute;
+
+   /* set popup size */
+   width: 512px;
+   height: 384px;
+   overflow-y: auto;
+
+   /* center popup within parent div */
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+
+   /* shape and colors */
+   border-radius: 24px;
+   padding: 24px;
+   background-color: var(--color_primary);
+
+   /* popup is initially not visible */
+   visibility: hidden;
+}
+
+.popup-container.active {
+   visibility: visible;
+   z-index: 9999;
+}
+
+/** 
+  *    close icon 
+  **/
+.popup-container .close-icon {
+   /* set close icon size */
+   width: 24px;
+   height: 24px;
+   
+   /* place in top right corner of parent */
+   position: absolute; 
+   top: 12px;
+   right: 12px;
+   
+   /* centering content */
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   /* circular shape */
+   border-radius: 50%;
+   border: 1px solid #e9e9e9;
+
+   /* pointer when hovering */
+   cursor: pointer;
+}
+
+.popup-container .close-icon:hover {
+   background-color: #e9e9e9;
+}
+
+@media (max-width: 768px) {
+   .popup-container {
+      width: 70%;
+   }
+}

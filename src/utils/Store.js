@@ -2,6 +2,7 @@ import {createContext, useReducer} from "react";
 import Reducer from './Reducer'
 
 const initialState = {
+    isLargeScreen: false,
     logged_in: false,
     token: null, 
     complete: false

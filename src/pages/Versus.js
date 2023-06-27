@@ -9,9 +9,8 @@ import GuessInput from '../components/GuessInput';
 import Leaderboard from '../components/Leaderboard';
 import Timer from '../components/Timer';
 import GameInvite from '../components/GameInvite';
-import Button from '../components/Button';
 
-const Versus = ({ changeSidebarState, setSidebarContent }) => {
+const Versus = ({ setPopupContent, changeSidebarState, setSidebarContent, setPopupOpen, isLargeScreen }) => {
    const [guessList, setGuessList] = useState([]);
 
    const players = [
@@ -65,7 +64,10 @@ const Versus = ({ changeSidebarState, setSidebarContent }) => {
                      setTryCount={setTryCount} 
                      guessList={guessList} 
                      setGuessList={setGuessList}
-                     hintsActivated={true} 
+                     hintsActivated={false} 
+                     setPopupContent={setPopupContent}
+                     setPopupOpen={setPopupOpen}
+                     isLargeScreen={isLargeScreen} 
                   />
                </div>
             </div>

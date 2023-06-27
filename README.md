@@ -7,7 +7,7 @@ Current TODOs:
 [X] fix CSS of very long words
 [] evtl. player search CSS fixes
 [X] Synonym UI
-[] Synonym Implementation 
+[X] Synonym Implementation 
 [] Implement Hint Dialog 
 [] Implement Firebase Authentication
 [] Restrict access for logged out users

@@ -8,7 +8,7 @@ import GuessBoard from '../components/GuessBoard';
 import GuessInput from '../components/GuessInput';
 
 
-const Singleplayer = () => {
+const Singleplayer = ({ setPopupContent, setPopupOpen, isLargeScreen }) => {
    const [guessList, setGuessList] = useState([]);
    
    const [currentTry, setCurrentTry] = useState(0);
@@ -28,6 +28,9 @@ const Singleplayer = () => {
                guessList={guessList} 
                setGuessList={setGuessList}
                hintsActivated={true} 
+               setPopupContent={setPopupContent}
+               setPopupOpen={setPopupOpen}
+               isLargeScreen={isLargeScreen}
             />
          </div>
       </div>

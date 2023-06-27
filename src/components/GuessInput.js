@@ -3,6 +3,8 @@ import React, { useEffect, useRef } from 'react';
 import '../styles/style.css';
 import '../styles/components/GuessInput.css';
 
+import HintDialog from './HintDialog';
+
 const getSynonyms = async (input) => {
    const filePath = process.env.PUBLIC_URL + "/synonyms/openthesaurus.txt";
    const response = await fetch(filePath);
@@ -19,7 +21,7 @@ const getSynonyms = async (input) => {
    return ["Keine Synonyme"];
  }
 
-const GuessInput = ({ guessList, setGuessList, currentTry, setCurrentTry, tryCount, setTryCount, hintsActivated }) => {
+const GuessInput = ({ guessList, setGuessList, setCurrentTry, tryCount, setTryCount, hintsActivated, setPopupOpen, setPopupContent, isLargeScreen }) => {
    const inputRef = useRef(null);
 
    useEffect(() => {
@@ -88,7 +90,17 @@ const GuessInput = ({ guessList, setGuessList, currentTry, setCurrentTry, tryCou
          </form>
          {hintsActivated && 
             <div className="hint-btn-wrapper">
-               <button className="hint-btn">
+               <button className="hint-btn" onClick={() => {
+                  setPopupOpen(true);
+                  setPopupContent(
+                     <HintDialog 
+                        pointsPerHint={250} 
+                        isCoop={false} 
+                        isLargeScreen={isLargeScreen} 
+                        setPopupOpen={setPopupOpen}
+                     />
+                  );
+               }}>
                   <img src="/images/idea-icon.svg" alt="hint-icon" />Tipp
                </button>
             </div>

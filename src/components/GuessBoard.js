@@ -15,7 +15,7 @@ const GuessBoard = ({ guessList, latestTry }) => {
                   <th className="left-aligned">Wort</th>
                   <th className="left-aligned">Nähe</th>
                   <th className="left-aligned">Rang</th>
-                  <th className="center-aligned">Synonyme</th>
+                  <th className="center-aligned"></th>
                </tr>
             </thead>
          </table>

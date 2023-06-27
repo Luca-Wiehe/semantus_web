@@ -8,7 +8,7 @@ import 'animate.css';
 import GuessBoard from '../components/GuessBoard';
 import GuessInput from '../components/GuessInput';
 
-const Daily = () => {
+const Daily = ({ setPopupContent, setPopupOpen, isLargeScreen }) => {
    const [guessList, setGuessList] = useState([]);
    
    const [currentTry, setCurrentTry] = useState(0);
@@ -21,13 +21,16 @@ const Daily = () => {
          </div>
          <div className="daily-submit-word-wrapper">
             <GuessInput 
-               hintsActivated={true} 
                guessList={guessList}
                setGuessList={setGuessList}
                currentTry={currentTry}
                setCurrentTry={setCurrentTry}
                tryCount={tryCount}
                setTryCount={setTryCount}
+               hintsActivated={true} 
+               setPopupContent={setPopupContent}
+               setPopupOpen={setPopupOpen}
+               isLargeScreen={isLargeScreen}
             />
          </div>
       </div>

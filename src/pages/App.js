@@ -11,15 +11,31 @@ import Singleplayer from "../pages/Singleplayer";
 import Versus from "../pages/Versus";
 import Coop from "../pages/Coop";
 
-import '../styles/style.css';
-import '../styles/pages/App.css';
-import Sidebar from '../components/Sidebar';
-import Rules from '../components/Rules';
+import "../styles/style.css";
+import "../styles/pages/App.css";
+import Popup from "../components/Popup";
+import Sidebar from "../components/Sidebar";
+import Rules from "../components/Rules";
+
+// import { useSelector, useDispatch } from 'react-redux';
 
 const App = () => {
+   // load dispatch to access variables from store 
+   // const dispatch = useDispatch();
+
+   
+   //const isLargeScreen = useSelector((state) => state.isLargeScreen);
+   //const setLargeScreen = (isLarge) => {
+   //   dispatch({ type: 'SET_LARGE_SCREEN', payload: isLarge });
+   //};
+
    // state variables for sidebar 
    const [isSidebarOpen, setSidebarOpen] = useState(false);
    const [sidebarContent, setSidebarContent] = useState(<Rules />);
+
+   // state variables for popups
+   const [isPopupOpen, setPopupOpen] = useState(true);
+   const [popupContent, setPopupContent] = useState("Hello World");
 
    const changeSidebarState = () => {
       setSidebarOpen(!isSidebarOpen);
@@ -28,13 +44,12 @@ const App = () => {
    // state variable for menu bar in mobile screen
    const [isMenuOpen, setMenuOpen] = useState(false);
 
-   // state variable for conditional rendering based on screen size
-   const [isLargeScreen, setIsLargeScreen] = useState(false);
+   const [isLargeScreen, setLargeScreen] = useState(false);
 
    // continuously track screen size
    useEffect(() => {
       const handleResize = () => {
-         setIsLargeScreen(window.innerWidth > 768);
+         setLargeScreen(window.innerWidth > 768);
       };
    
       handleResize();
@@ -58,15 +73,48 @@ const App = () => {
                         <Route path="/login" exact element={<Login />}/>
                         <Route path="/signup" exact element={<Signup />}/>
                         <Route path="/gamemode" exact element={<GameMode />}/>
-                        <Route path="/daily" exact element={<Daily />}/>
-                        <Route path="/singleplayer" exact element={<Singleplayer />}/>
-                        <Route path="/versus" exact element={<Versus changeSidebarState={changeSidebarState} setSidebarContent={setSidebarContent} isLargeScreen={isLargeScreen} />}/>
-                        <Route path="/coop" exact element={<Coop changeSidebarState={changeSidebarState} setSidebarContent={setSidebarContent} />}/>
+                        <Route path="/daily" exact element={
+                           <Daily 
+                              setPopupContent={setPopupContent}
+                              setPopupOpen={setPopupOpen}
+                              isLargeScreen={isLargeScreen}
+                           />}
+                        />
+                        <Route path="/singleplayer" exact element={
+                           <Singleplayer 
+                              setPopupContent={setPopupContent}
+                              setPopupOpen={setPopupOpen}
+                              isLargeScreen={isLargeScreen}
+                           />}
+                        />
+                        <Route path="/versus" exact element={
+                           <Versus 
+                              setPopupContent={setPopupContent}
+                              changeSidebarState={changeSidebarState} 
+                              setSidebarContent={setSidebarContent} 
+                              setPopupOpen={setPopupOpen}
+                              isLargeScreen={isLargeScreen} 
+                           />}
+                        />
+                        <Route path="/coop" exact element={
+                           <Coop 
+                              setPopupContent={setPopupContent}
+                              changeSidebarState={changeSidebarState} 
+                              setSidebarContent={setSidebarContent} 
+                              setPopupOpen={setPopupOpen}
+                              isLargeScreen={isLargeScreen}
+                           />}
+                        />
                      </Routes>
                   </div>
                </div>
             }
+            <Popup popupContent={popupContent} isPopupOpen={isPopupOpen} setPopupOpen={setPopupOpen} />
             <Sidebar sidebarContent={sidebarContent} isSidebarOpen={isSidebarOpen} changeSidebarState={changeSidebarState} isLargeScreen={isLargeScreen} />
+            {isPopupOpen &&
+               <div className="overlay" />
+            }
+            
          </div>
       </Router>
    );
