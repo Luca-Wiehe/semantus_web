@@ -23,7 +23,6 @@ const DialogText = ({ pointsPerHint, isCoop }) => {
 }
 
 const HintDialog = ({ pointsPerHint, isCoop, setPopupOpen, isLargeScreen }) => {
-   console.log(isLargeScreen)
    return (
       <>
          <div className="hint-dialog-wrapper">

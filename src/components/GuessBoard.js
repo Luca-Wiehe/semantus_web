@@ -25,11 +25,6 @@ const GuessBoard = ({ guessList, latestTry }) => {
    // sort guessList in descending order by similarity
    let sortedGuesses = guessList.sort((a, b) => b.similarity - a.similarity);
 
-   console.log("Latest try: ");
-   console.log(latestTry);
-   console.log("guessList: ")
-   console.log(guessList);
-
    // find latest try
    const latestGuess = sortedGuesses.filter(guess => guess.try === latestTry)[0];
 

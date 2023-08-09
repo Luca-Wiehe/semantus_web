@@ -1,5 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+
+import { BaseContext } from "../utils/FirebaseContext";
 
 import MenuBar from '../components/MenuBar';
 import Home from '../pages/Home';
@@ -34,8 +36,8 @@ const App = () => {
    const [sidebarContent, setSidebarContent] = useState(<Rules />);
 
    // state variables for popups
-   const [isPopupOpen, setPopupOpen] = useState(true);
-   const [popupContent, setPopupContent] = useState("Hello World");
+   const [isPopupOpen, setPopupOpen] = useState(false);
+   const [popupContent, setPopupContent] = useState("");
 
    const changeSidebarState = () => {
       setSidebarOpen(!isSidebarOpen);
