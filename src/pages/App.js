@@ -1,7 +1,5 @@
-import React, {useState, useEffect, useContext} from 'react';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-
-import { BaseContext } from "../utils/FirebaseContext";
+import React, {useState, useEffect } from 'react';
+import {Navigate, BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 import MenuBar from '../components/MenuBar';
 import Home from '../pages/Home';
@@ -19,17 +17,11 @@ import Popup from "../components/Popup";
 import Sidebar from "../components/Sidebar";
 import Rules from "../components/Rules";
 
-// import { useSelector, useDispatch } from 'react-redux';
+import { useAuth } from '../utils/AuthContext';
 
 const App = () => {
-   // load dispatch to access variables from store 
-   // const dispatch = useDispatch();
 
-   
-   //const isLargeScreen = useSelector((state) => state.isLargeScreen);
-   //const setLargeScreen = (isLarge) => {
-   //   dispatch({ type: 'SET_LARGE_SCREEN', payload: isLarge });
-   //};
+   const auth = useAuth();
 
    // state variables for sidebar 
    const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -66,15 +58,21 @@ const App = () => {
    return (
       <Router>
          <div className="app">
-            <MenuBar isLargeScreen={isLargeScreen} isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen} changeSidebarState={changeSidebarState} setSidebarContent={setSidebarContent} />
+            <MenuBar 
+               isLargeScreen={isLargeScreen} 
+               isMenuOpen={isMenuOpen} 
+               setMenuOpen={setMenuOpen} 
+               changeSidebarState={changeSidebarState} 
+               setSidebarContent={setSidebarContent} 
+            />
             {!isMenuOpen && 
                <div className="body-bg">
                   <div className="body-container">
                      <Routes>
                         <Route path="/" exact element={<Home />}/>
-                        <Route path="/login" exact element={<Login />}/>
-                        <Route path="/signup" exact element={<Signup />}/>
-                        <Route path="/gamemode" exact element={<GameMode />}/>
+                        <Route path="/login" exact element={ auth.isLoggedIn ? <Navigate to="/gamemode"/> : <Login />}/>
+                        <Route path="/signup" exact element={ auth.isLoggedIn ? <Navigate to="/gamemode"/> : <Signup />}/>
+                        <Route path="/gamemode" exact element={ auth.isLoggedIn ? <GameMode /> : <Navigate to="/daily"/>}/>
                         <Route path="/daily" exact element={
                            <Daily 
                               setPopupContent={setPopupContent}
@@ -83,11 +81,15 @@ const App = () => {
                            />}
                         />
                         <Route path="/singleplayer" exact element={
+                           auth.isLoggedIn ?
                            <Singleplayer 
                               setPopupContent={setPopupContent}
                               setPopupOpen={setPopupOpen}
                               isLargeScreen={isLargeScreen}
-                           />}
+                           />
+                           :
+                           <Navigate to="/login"/>
+                        }
                         />
                         <Route path="/versus" exact element={
                            <Versus 

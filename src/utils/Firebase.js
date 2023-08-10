@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, TwitterAuthProvider, GoogleAuthProvider, GithubAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { checkUsername, loginUser, signupUser } from "../api/api-calls";
+import { checkUsername, getUserData, loginUser, signupUser } from "../api/api-calls";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAV58to_cOEk7P2cKjgZYqBEOdTFec5YB0",
@@ -16,6 +16,27 @@ class Firebase {
       this.app = initializeApp(firebaseConfig);
    }
 
+   async logout(){
+      console.log("Logging out");
+      const auth = getAuth();
+      await auth.signOut();
+   }
+
+   async getUserData(){
+      const auth = getAuth();
+
+      if(auth.currentUser){
+         const idToken = await auth.currentUser.getIdToken(true);
+         const response = await getUserData(idToken);
+
+         if(response.status === 200) {
+            return response.data;
+         }else{
+            return null;
+         }
+      }
+   }
+
    async emailSignup(email, username, password){
       const auth = getAuth();
 
@@ -29,12 +50,17 @@ class Firebase {
 
       if(usernameCheck.includes("verfügbar")) {
          await createUserWithEmailAndPassword(auth, email, password);
-
-         const idToken = await auth.currentUser.getIdToken(true)
+         const idToken = await auth.currentUser.getIdToken(true);
          const response = await signupUser(idToken, username);
-   
-         console.log(response)
+
+         if(response.status === 201) {
+            return true;
+         }else {
+            return false;
+         }
       }
+
+      return false;
    }
 
    async socialSignup(platform, username){
@@ -48,17 +74,26 @@ class Firebase {
       }
 
       // check if username is still available
-      const usernameCheck = await checkUsername(username);
+      const usernameCheck = (await checkUsername(username)).data.message;
 
       // only if username is available, we want to sign the user up
       if(usernameCheck.includes("verfügbar")) {
          await signInWithPopup(auth, provider);
 
-         const idToken = await auth.currentUser.getIdToken(true)
-         const response = await signupUser(idToken, username);
-   
-         console.log(response)
+         if(auth.currentUser){
+            const idToken = await auth.currentUser.getIdToken(true);
+            const response = await signupUser(idToken, username);
+
+            if(response.status === 201) {
+               return true;
+            }else {
+               return false;
+            }
+         }
+         
       }
+
+      return false;
    }
 
    async emailSignin(email, password){
@@ -71,10 +106,21 @@ class Firebase {
 
       await signInWithEmailAndPassword(auth, email, password);
 
-      const idToken = await auth.currentUser.getIdToken(true);
-      const response = await loginUser(idToken);
-
-      console.log(response);
+      try{
+         if(auth.currentUser){
+            const idToken = await auth.currentUser.getIdToken(true);
+            const response = await loginUser(idToken);
+   
+            if(response.status === 200) {
+               return true;
+            }else {
+               return false;
+            }
+         }
+      }catch(error){
+         return false;
+      }
+      
    }
 
    async socialSignin(platform){
@@ -87,11 +133,22 @@ class Firebase {
       }
 
       await signInWithPopup(auth, provider);
-
-      const idToken = await auth.currentUser.getIdToken(true);
-      const response = await loginUser(idToken);
- 
-      console.log(response);         
+      
+      try{
+         if(auth.currentUser){
+            const idToken = await auth.currentUser.getIdToken(true);
+            const response = await loginUser(idToken);
+            
+            if(response.status === 200) {
+               return true;
+            }else {
+               return false;
+            }
+         }
+      }catch(error){
+         return false;
+      }
+      
    }
 }
 

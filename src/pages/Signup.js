@@ -13,6 +13,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaArrowRight } from 'react-icons/fa';
 
 import { BaseContext } from "../utils/FirebaseContext";
+import { useAuth } from '../utils/AuthContext';
 
 const UsernameInput = ({ username, setUsername, setHasUsername }) => {
    const [errorMessage, setErrorMessage] = useState("");
@@ -62,15 +63,32 @@ const SignupConfirmation = ({ username }) => {
    // introduce firebase actions
    const firebase = useContext(BaseContext);
 
+   // introduce auth context
+   const auth = useAuth();
+
    const signUpPlatform = async (platform) => {
-      await firebase.socialSignup(platform, username);
+      const success = await firebase.socialSignup(platform, username);
+
+      if(success){
+         console.log("Signup successful!");
+         auth.login();
+      }else{
+         console.log("Signup failed!")
+      }
    }
 
    const signUpEmail = async (event) => {
       event.preventDefault();
 
       if (emailError === "" || passwordError === "" || repeatPasswordError === "") {
-         await firebase.emailSignup(email, username, password);
+         const success = await firebase.emailSignup(email, username, password);
+
+         if(success){
+            console.log("Signup successful!");
+            auth.login();
+         }else{
+            console.log("Signup failed!");
+         }
       }
    }
 

@@ -12,18 +12,34 @@ import { AiFillGithub } from 'react-icons/ai';
 import { AiOutlineTwitter } from 'react-icons/ai';
 
 import { BaseContext } from "../utils/FirebaseContext";
+import { useAuth } from '../utils/AuthContext';
 
 const Login = () => {
    const firebase = useContext(BaseContext);
+   const auth = useAuth();
 
    const signInSocial = async (platform) => {
-      await firebase.socialSignin(platform);
+      const success = await firebase.socialSignin(platform);
+
+      if(success) {
+         console.log("Login successful!")
+         auth.login();
+      }else{
+         console.log("Login failed!");
+      }
    }
 
    const signInEmail = async (event, email, password) => {
       event.preventDefault(); 
 
-      await firebase.emailSignin(email, password);
+      const success = await firebase.emailSignin(email, password);
+
+      if(success){
+         console.log("Login successful!")
+         auth.login();
+      }else{
+         console.log("Login failed!");
+      }
    }
 
    // introduce state variables for email login 

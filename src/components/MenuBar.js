@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BiChevronsDown } from 'react-icons/bi';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
@@ -7,25 +7,55 @@ import '../styles/style.css'
 import '../styles/components/MenuBar.css';
 import Button from './Button';
 import Rules from './Rules';
+import { BaseContext } from '../utils/FirebaseContext';
+import { useAuth } from '../utils/AuthContext';
 
 /**
  * A responsive MenuBar that sticks to Semantus style guidelines.
  */
 const MenuBar = ({isLargeScreen, isMenuOpen, setMenuOpen, changeSidebarState, setSidebarContent}) => {
-   // state variable to check if user is logged in
-   const isLoggedIn = false;
+   const [username, setUsername] = useState("");
+   const [points, setPoints] = useState(0);
+
+   // introduce firebase actions
+   const firebase = useContext(BaseContext);
+
+   const auth = useAuth();
+
+   useEffect(() => {
+      firebase.getUserData().then((userdata) => {
+         if(userdata != null){
+            setUsername(userdata.username);
+            setPoints(userdata.points);
+         }
+      });
+   }, [auth.isLoggedIn]);
+
+   const firebase_logout = () => {
+      firebase.logout();
+   }
 
    // display profile and points when logged in 
    const LoggedInMenuItems = ({isExpanded}) => {
       const menuItems = [
-         <li className="link-item">
+         <li 
+            key="loggedin0" 
+            className="link-item" 
+            onClick={() => {
+               firebase_logout();
+               auth.logout();
+            }}
+         >
+            Logout
+         </li>,
+         <li key="loggedin1" className="link-item">
              Mein Profil
          </li>,
-         <li className="user-item">
-            <span className="upper-span">meister_luca</span>
-            <span>2000 Points</span>
+         <li key="loggedin2" className="user-item">
+            <span className="upper-span">{username}</span>
+            <span>{points} Points</span>
          </li>,
-         <li>
+         <li key="loggedin3">
             <img className="avatar" src="images/avatar.png" alt="avatar" />
          </li>
       ]
@@ -82,7 +112,7 @@ const MenuBar = ({isLargeScreen, isMenuOpen, setMenuOpen, changeSidebarState, se
                      >
                         Regeln
                      </li>
-                     {isLoggedIn ? <LoggedInMenuItems isExpanded={!isLargeScreen} /> : <LoggedOutMenuItems isExpanded={!isLargeScreen} />}
+                     {auth.isLoggedIn ? <LoggedInMenuItems isExpanded={!isLargeScreen} /> : <LoggedOutMenuItems isExpanded={!isLargeScreen} />}
                   </ul>
                ) :
                isMenuOpen ? 
@@ -93,7 +123,7 @@ const MenuBar = ({isLargeScreen, isMenuOpen, setMenuOpen, changeSidebarState, se
          {/* Expanded Menu */}
          {isMenuOpen && !isLargeScreen && 
             <ul className="expanded-menu-bar-items">
-               {isLoggedIn ? <LoggedInMenuItems isExpanded={true} /> : <LoggedOutMenuItems isExpanded={true} />}
+               {auth.isLoggedIn ? <LoggedInMenuItems isExpanded={true} /> : <LoggedOutMenuItems isExpanded={true} />}
                <li className="link-item" onClick={() => {changeSidebarState(); setMenuOpen(false); setSidebarContent(<Rules />)}}>
                   Regeln
                </li>
