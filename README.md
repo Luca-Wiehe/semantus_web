@@ -1,16 +1,4 @@
 # Semantus Web Application
+This is the React.js based Web Application for "Semantus". Semantus is a guessing game where players have to guess a given word based on semantic similarities. The project is split into a Django Server and the Web Application. 
 
-Current TODOs:
-[X] fix vertical expansion of grid in mobile version
-[X] fix size of clock when shrinking screen size
-[X] fix invite button
-[X] fix CSS of very long words
-[] evtl. player search CSS fixes
-[X] Synonym UI
-[X] Synonym Implementation 
-[] Implement Hint Dialog 
-[] Implement Firebase Authentication
-[] Restrict access for logged out users
-[] list of all existing words (+ lemmatization)
-[] Implement cosine similarity to compare words
-[] Fix menu bar for mobile phone (transition like for rules)
+### Repository Structure
