@@ -1,6 +1,39 @@
 # Semantus Web Application
 This is the React.js based Web Application for "Semantus". Semantus is a guessing game where players have to guess a given word based on semantic similarities. The project is split into Django Server and Web Application, connected via Django REST Framework.
 
+## Preview
+To gain some insights into the Web Application, check out the following Screenshots:
+
+<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: 20px; justify-content: center; text-align: center;">
+  <div>
+    <img width="300" alt="preview-1" src="https://github.com/Luca-Wiehe/semantus_web/assets/85710000/38c395ad-e100-49e1-ac2e-01aa911d3830">
+    <br>
+    <em>Screenshot 1: Login Mechanism using Firebase Auth</em>
+  </div>
+  <br>
+  <div>
+    <img width="300" alt="preview-2" src="https://github.com/Luca-Wiehe/semantus_web/assets/85710000/ccbc85fb-92fc-4cc4-b12f-4a8383be0842">
+    <br>
+    <em>Screenshot 2: Game Preview</em>
+  </div>
+  <br>
+  <div>
+    <img width="300" alt="Screenshot 2024-01-04 at 00 56 42" src="https://github.com/Luca-Wiehe/semantus_web/assets/85710000/69332841-2f16-4b9a-82d2-fb2e28a06ae9">
+    <br>
+    <em>Screenshot 3: Multiplayer Game Mode</em>
+  </div>
+  <br>
+  <div>
+    <img width="300" alt="Screenshot 2024-01-04 at 00 58 13" src="https://github.com/Luca-Wiehe/semantus_web/assets/85710000/d0f007cd-c93d-445d-9bec-370b8a56a08e">
+    <br>
+    <em>Screenshot 4: Friend List</em>
+  </div>
+  
+
+
+</div>
+
+
 ## Project Description
 
 ### Motivation for Application
